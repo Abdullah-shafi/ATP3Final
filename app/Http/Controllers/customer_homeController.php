@@ -12,7 +12,12 @@ class customer_homeController extends Controller
   //home
    public function index(Request $req){
        
-         
+         $pro = DB::table('property')
+                       ->join('property_picture', 'property.property_id', '=', 'property_picture.property_id')
+
+                       ->where('status', 'allowed')
+                       ->orderby('no_of_clicks', 'desc')
+                        ->get();
 
          $propertys=DB::table('property')
                        ->join('property_picture', 'property.property_id', '=', 'property_picture.property_id')
@@ -21,8 +26,8 @@ class customer_homeController extends Controller
                        ->paginate(3);
 
       return view('website.index')
-                ->with('propertys',$propertys);
-
+                ->with('propertys',$propertys)
+                 ->with('pro',$pro);
       
     }
 

@@ -37,8 +37,9 @@ class LoginController extends Controller
                     ->where('username', $req->uname)
                     ->where('password', $req->password)
                     ->first();
-           
-              if($user->type=='customer'){
+         if ( $user) {
+
+         if($user->type=='customer'){
                    $req->session()->put('uname', $req->uname);
                    return redirect()->route('website.r_customer_home');
                }
@@ -47,10 +48,18 @@ class LoginController extends Controller
                    
                    return redirect()->route('login.index');
                }
+         }
+         else
+         {
+           $req->session()->flash('msg', 'Please,cheack Your username and password again');
+           return redirect()->route('login.index');
+         }
+              
+
+          // }
+            
+
              }
-
-             
-
 
               }
 

@@ -384,4 +384,98 @@ $name=$req->session()->get('uname');
           
            return redirect()->route('website.r_customer_delete_property');  
     }
+
+//customer_upload_property
+
+     public function customer_upload_property(Request $req){
+       
+
+         return view('website.customer_upload_property ');
+      
+     
+    }
+    
+public function customer_upload_property_verify(Request $req){
+       
+
+$validation = Validator::make($req->all(), [
+            'title'=>'required',   
+            'place'=>'required',
+            'type'=>'required',
+            'style'=>'required',
+             'price'=>'required',
+            'bed'=>'required',
+            'bath'=>'required',
+            'feet'=>'required',
+            'floor'=>'required',
+            'description'=>'required'
+                 
+        ]);
+            
+       if($validation->fails()){
+            return back()
+                    ->with('errors', $validation->errors())
+                    ->withInput();
+
+            return redirect()->route('website.customer_upload_property ')
+                            ->with('errors', $validation->errors())
+                            ->withInput();
+            }
+
+             else
+             {
+              
+               
+      if($req->hasFile('pic')){
+      $file = $req->file('pic');
+        $image=date('mdYHis') . uniqid() .$file->getClientOriginalName();
+      if($file->move('image',$image)){
+
+      
+
+       $name=$req->session()->get('uname');
+
+           $req->session()->flash('msg','Your property Uploaded Successfully');
+            
+        
+
+
+
+           DB::Table('customer')->whereusername($name)->Increment('pending_posts');
+            DB::Table('customer')->whereusername($name)->Increment('total_posts');
+
+                   DB::table('property')->insert(
+           ['username' =>$name, 'property_price'=>$req->price,'property_area'=>$req->place,'p_type'=>$req->type,  'style'=>$req->style,'bed'=>$req->bed,'bath'=>$req->bath,'feet'=>$req->feet,'title'=>$req->title,'floor'=>$req->floor,'description'=>$req->description,'status'=>'pending','no_of_clicks'=>'0']
+            );
+
+                   $property_id=DB::table('property')->max('property_id');
+       
+                      DB::table('property_picture')->insert(
+           ['property_id' =>$property_id, 'image'=>$image]
+            );
+ 
+return view('website.customer_upload_property ');
+      }
+
+      else{
+        return redirect()->route('website.customer_upload_property ');
+      }
+
+    }else{
+      echo "File not found!";
+    }
+           //   
+
+
+           }      
+     
+    }
+    
+
+
+
+
 }
+
+
+
