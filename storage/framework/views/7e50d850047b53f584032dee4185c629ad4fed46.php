@@ -52,7 +52,7 @@ Property Rental Managemnet System | Home
 
 
 
- <!-- ##### Advance Search Area Start ##### -->
+ <!-- ##### Advance Search Area Start #####  -->
    <?php $__env->startSection('search'); ?> 
 <div class="south-search-area">
         <div class="container">
@@ -67,7 +67,7 @@ Property Rental Managemnet System | Home
 
 <!-- Search Form -->
                         <form  method="post" action="/r_customer_home">
-                            <?php echo e(csrf_field()); ?>
+                           <?php echo e(csrf_field()); ?>
 
                             <div class="row">
 

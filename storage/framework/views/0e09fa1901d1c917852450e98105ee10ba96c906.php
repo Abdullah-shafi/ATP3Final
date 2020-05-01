@@ -85,7 +85,7 @@
                                 <li><a href="<?php echo e(route('website.customer_all_property')); ?>">All Properties</a></li>
                                 
                                 <li><a href="<?php echo e(route('website.customer_contact')); ?>">Contact</a></li>
-                                <li><a href="index.blade.php">Upload Property</a></li>
+                                <li><a href="<?php echo e(route('website.customer_upload_property')); ?>">Upload Property</a></li>
                                 <li><a href="<?php echo e(route('website.r_customer_edit_property')); ?>">Edit Property</a></li>
                                  <li><a href="<?php echo e(route('website.r_customer_delete_property')); ?>">Delete Property</a></li>
                                  <li><a href="/logout">LogOut</a></li>

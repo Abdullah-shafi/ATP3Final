@@ -98,7 +98,7 @@
 <body  style="background-image: url('images/bg-01.jpg');">
 <div class="login-form">   
       
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
 
         <?php echo csrf_field(); ?>
         <div>
@@ -112,30 +112,34 @@
         <div class="avatar"><i class="material-icons">&#xE7FF;</i></div>
         <h4 class="modal-title">Register Here</h4>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Username" required="required" name="username">
+            <input type="text" class="form-control" placeholder="Username" required="required" name="username"value="<?php echo e(old('username')); ?>">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="name" required="required" name="name">
+            <input type="text" class="form-control" placeholder="name" required="required" name="name"value="<?php echo e(old('name')); ?>">
         </div>
         <div class="form-group">
-            <input type="email" class="form-control" placeholder="Email" required="required" name="email">
+            <input type="email" class="form-control" placeholder="Email" required="required" name="email"value="<?php echo e(old('email')); ?>">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" placeholder="Password" required="required" name="password">
+            <input type="password" class="form-control" placeholder="Password" required="required" name="password"value="<?php echo e(old('password')); ?>">
         </div>
          <div class="form-group">
-            <input type="password" class="form-control" placeholder="Confirm Password" required="required" name="confirm_password">
+            <input type="password" class="form-control" placeholder="Confirm Password" required="required" name="confirm_password"value="<?php echo e(old('confirm_password')); ?>">
         </div>
          <div class="form-group">
-            <input type="number" class="form-control" placeholder="Mobile No" name="number">
+            <input type="number" class="form-control" placeholder="Mobile No" name="number" required=""value="<?php echo e(old('number')); ?>">
+        </div>
+        <div class="form-group">
+            <h6 align="center">Picture:<input type="file" name="pic"  required=""></h6>
         </div>
 
-         <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $err): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+         <h5 style="color: red">
+            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $err): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <?php echo e($err); ?> <br>
-         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>    <br>
+         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  </h5>  <br>
         <input type="submit" class="btn btn-primary btn-block btn-lg" value="Signup">              
     </form>     
    
 </div>
 </body>
-</html>                                                                 <?php /**PATH C:\Users\Abdullah Shafi\Desktop\try\laratest\resources\views/registation/index.blade.php ENDPATH**/ ?>
+</html>                                                                 <?php /**PATH C:\Users\Abdullah Shafi\Desktop\try\laratest\resources\views/registration/index.blade.php ENDPATH**/ ?>
