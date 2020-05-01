@@ -5,11 +5,17 @@
 //login
 Route::get('/login', 'LoginController@index')->name('login.index');
 Route::post('/login', 'LoginController@verify')->name('login.index');
+
 //registation
-Route::get('/registration', 'RegistrationController@index')->name('regestration.index');
+Route::get('/registration', 'RegistrationController@index')->name('registration.index');
+Route::post('/registration', 'RegistrationController@verify')->name('registration.index');
 
 //Home
 Route::get('/customer_home', 'customer_homeController@index')->name('website.customer_home');
+//Home
+Route::post('/customer_home', 'customer_searchController@search')->name('website.customer_home');
+
+
 //about
 Route::get('/about-us', 'customer_homeController@about')->name('website.about-us');
 
@@ -61,6 +67,11 @@ Route::post('/customer_edit_property_details/{id}', 'r_customer_homeController@c
 //customer_delete_property
 Route::get('/customer_delete_property', 'r_customer_homeController@customer_delete_property')->name('website.r_customer_delete_property');
 Route::get('/customer_delete_property/{id}', 'r_customer_homeController@customer_delete_property_save');
+
+//customer_upload_property
+Route::get('/customer_upload_property', 'r_customer_homeController@customer_upload_property')->name('website.customer_upload_property');
+Route::post('/customer_upload_property', 'r_customer_homeController@customer_upload_property_verify')->name('website.customer_upload_property');
+
 
  });
 
