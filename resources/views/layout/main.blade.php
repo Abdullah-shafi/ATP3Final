@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="style.css">
 
  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>  
-
+  <script type="text/javascript" src="http://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" defer></script>
 </head>
 
 <body>

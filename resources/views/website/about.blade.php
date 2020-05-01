@@ -7,7 +7,7 @@ Property Rental Managemnet System | About
 @section('chart')
 <!-- <?php  
  $connect = mysqli_connect("localhost", "root", "", "laravel");  
- $query = "SELECT date, count(*) as number FROM property GROUP BY date  ORDER BY date DESC LIMIT 0, 7";  
+ $query = "SELECT date(date) , count(*) as number FROM property GROUP BY date(date)  ORDER BY date(date) DESC LIMIT 0, 7";  
  $result = mysqli_query($connect, $query);  
  ?>  --> 
 

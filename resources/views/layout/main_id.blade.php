@@ -84,7 +84,7 @@
                               <li><a href="/customer_all_property">All Properties</a></li>
                                 
                                 <li><a href="/customer_contact">Contact</a></li>
-                                <li><a href="index.blade.php">Upload Property</a></li>
+                                <li><a href="{{route('website.customer_upload_property')}}">Upload Property</a></li>
                                 <li><a href="/customer_edit_property">Edit Property</a></li>
                                  <li><a href="/customer_delete_property">Delete Property</a></li>
                                  <li><a href="/logout">LogOut</a></li>

@@ -52,7 +52,7 @@ Property Rental Managemnet System | Home
 @endsection
  <!-- ##### Hero Area End ##### -->
 
- <!-- ##### Advance Search Area Start ##### -->
+ <!-- ##### Advance Search Area Start #####  -->
    @section('search') 
 <div class="south-search-area">
         <div class="container">
@@ -63,81 +63,112 @@ Property Rental Managemnet System | Home
                         <div class="search-title">
                             <p>Search for your home</p>
                         </div>
-                        <!-- Search Form -->
-                        <form action="#" method="post" id="advanceSearch">
+
+
+<!-- Search Form -->
+                        <form  method="post" action="/customer_home">
+                           {{csrf_field()}}
                             <div class="row">
 
                                 <div class="col-12 col-md-4 col-lg-3">
                                     <div class="form-group">
-                                        <input type="input" class="form-control" name="input" placeholder="Name">
+                                         <input list="title" name="titles"class="form-control" type="text"placeholder="Title">
+ 
+                                    <datalist id="title" >
+                                          @foreach($pro as $property)
+                                         <option value="{{$property->title}}"/>  @endforeach
+                                    </datalist>
                                     </div>
+                                </div> 
+                        
+                                <div class="col-12 col-md-4 col-lg-3">
+                                     <div class="form-group">
+                                    <input list="hosting-plan" name="areas" class="form-control" type="text"placeholder="Area">
+ 
+                                    <datalist id="hosting-plan">
+                                          @foreach($pro as $property)
+                                         <option value="{{$property->property_area}}"/>  @endforeach
+                                    </datalist>
+                                </div>
+                                </div>
+                                
+                                   <div class="col-12 col-md-4 col-lg-3">
+                                     <div class="form-group">
+                                    <input list="p_type" name="p_type" class="form-control" type="text" placeholder="P_type">
+ 
+                                    <datalist id="p_type">
+                                          
+                                         <option value="apartment"/>  
+                                         <option value="house"/> 
+                                         <option value="bachelor"/> 
+                                         <option value="flat"/> 
+
+                                    </datalist>
+                                </div>
+                                </div>
+
+                               <div class="col-12 col-md-4 col-lg-3">
+                                     <div class="form-group">
+                                    <input list="bed" name="bed" class="form-control" type="text" placeholder="BedRooms">
+ 
+                                    <datalist id="bed">
+                                          
+                                         <option value="1"/>  
+                                         <option value="2"/> 
+                                         <option value="3"/> 
+                                         <option value="4"/> 
+                                         <option value="5+"/> 
+
+                                    </datalist>
+                                </div>
+                                </div>
+
+                                
+                               <div class="col-12 col-md-4 col-lg-3">
+                                     <div class="form-group">
+                                    <input list="bath" name="bath" class="form-control" type="text" placeholder="BathRooms">
+ 
+                                    <datalist id="bath">
+                                          
+                                         <option value="1"/>  
+                                         <option value="2"/> 
+                                         <option value="3"/> 
+                                         <option value="4"/> 
+                                         <option value="5+"/> 
+
+                                    </datalist>
+                                </div>
+                                </div>
+ 
+                             <div class="col-12 col-md-4 col-lg-3">
+                                     <div class="form-group">
+                                    <input list="feet" name="feets" class="form-control" type="text" placeholder="Sq_feet">
+ 
+                                    <datalist id="feet">
+                                          
+                                         @foreach($pro as $property)
+                                         <option value="{{$property->feet}}"/>  @endforeach 
+                                         
+                                          
+
+                                    </datalist>
+                                </div>
                                 </div>
 
                                 <div class="col-12 col-md-4 col-lg-3">
-                                    <div class="form-group">
-                                        <input type="input" class="form-control" name="input" placeholder="Area">
-                                    </div>
+                                     <div class="form-group">
+                                    <input list="price" name="prices" class="form-control" type="text" placeholder="price">
+ 
+                                    <datalist id="price">
+                                          
+                                         @foreach($pro as $property)
+                                         <option value="{{$property->property_price}}"/>  @endforeach 
+                                         
+                                          
+
+                                    </datalist>
                                 </div>
-
-                                <div class="col-12 col-md-4 col-lg-3">
-                                    <div class="form-group">
-                                        <select class="form-control" id="catagories">
-                                            <option>All Catagories</option>
-                                            <option>Apartment</option>
-                                            <option>House</option>
-                                            <option>Bachelor</option>
-                                        </select>
-                                    </div>
                                 </div>
-
-                                <div class="col-12 col-md-4 col-xl-2">
-                                    <div class="form-group">
-                                        <select class="form-control" id="bedrooms">
-                                            <option>Bedrooms</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5+</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-md-4 col-xl-2">
-                                    <div class="form-group">
-                                        <select class="form-control" id="bathrooms">
-                                            <option>Bathrooms</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5+</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-md-8 col-lg-12 col-xl-5 d-flex">
-                                    <!-- Space Range -->
-                                    <div class="slider-range">
-                                        <div data-min="120" data-max="820" data-unit=" sq. ft" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="120" data-value-max="820">
-                                            <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
-                                            <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                                            <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                                        </div>
-                                        <div class="range">120 sq. ft - 820 sq. ft</div>
-                                    </div>
-
-                                    <!-- Distance Range -->
-                                    <div class="slider-range">
-                                        <div data-min="10" data-max="1300" data-unit=" mil" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="10" data-value-max="1300">
-                                            <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
-                                            <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                                            <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                                        </div>
-                                        <div class="range">1000k. - 1CR.</div>
-                                    </div>
-                                </div>
-
                                
                                     <!-- Submit -->
                                     <div class="form-group mb-0">
@@ -154,6 +185,7 @@ Property Rental Managemnet System | Home
 
 <!-- ##### Advance Search Area End ##### -->
 @endsection
+
 
 
 <!-- ##### Featured Properties Area Start ##### -->
@@ -316,6 +348,8 @@ Property Rental Managemnet System | Home
         </div>
     </section>
     <!-- ##### Testimonials Area End ##### -->
+
+
 
  
     @endsection

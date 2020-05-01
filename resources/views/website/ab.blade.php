@@ -7,7 +7,7 @@ Property Rental Managemnet System | About
 @section('chart')
 <!-- <?php  
  $connect = mysqli_connect("localhost", "root", "", "laravel");  
- $query = "SELECT date, count(*) as number FROM property GROUP BY date  ORDER BY date DESC LIMIT 0, 7";  
+ $query = "SELECT date(date) , count(*) as number FROM property GROUP BY date(date)  ORDER BY date(date) DESC LIMIT 0, 7";  
  $result = mysqli_query($connect, $query);  
  ?>  --> 
 
@@ -19,11 +19,11 @@ Property Rental Managemnet System | About
            function drawChart()  
            {  
                 var data = google.visualization.arrayToDataTable([  
-                          ['date', 'Number'],  
+                          ['date(date)', 'Number'],  
                           <?php  
                           while($row = mysqli_fetch_array($result))  
                           {  
-                               echo "['".$row["date"]."', ".$row["number"]."],";  
+                               echo "['".$row["date(date)"]."', ".$row["number"]."],";  
                           }  
                           ?>  
                      ]);  
@@ -118,6 +118,11 @@ Property Rental Managemnet System | About
 
 
 @section('middle')
+
+
+
+
+
 
 <section class="meet-the-team-area section-padding-100-0">
         <div class="container">

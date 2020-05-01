@@ -54,7 +54,7 @@ Property Rental Managemnet System | Home
 
 
 
- <!-- ##### Advance Search Area Start ##### -->
+ <!-- ##### Advance Search Area Start #####  -->
    @section('search') 
 <div class="south-search-area">
         <div class="container">
@@ -69,7 +69,7 @@ Property Rental Managemnet System | Home
 
 <!-- Search Form -->
                         <form  method="post" action="/r_customer_home">
-                            {{csrf_field()}}
+                           {{csrf_field()}}
                             <div class="row">
 
                                 <div class="col-12 col-md-4 col-lg-3">
